@@ -1,0 +1,20 @@
+NAME                             READY   STATUS    RESTARTS        AGE     IP            NODE       NOMINATED NODE   READINESS GATES
+pod/flask-app-66c8679745-h4jwx   1/1     Running   0               7m8s    10.244.0.13   minikube   <none>           <none>
+pod/flask-app-66c8679745-xjgz2   1/1     Running   0               7m8s    10.244.0.14   minikube   <none>           <none>
+pod/postgres-75bbf97b58-hvnv7    1/1     Running   1 (8m25s ago)   9m50s   10.244.0.10   minikube   <none>           <none>
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE     SELECTOR
+service/flask-app    NodePort    10.99.84.159   <none>        80:32373/TCP   9m49s   app=flask-app
+service/kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP        14m     <none>
+service/postgres     ClusterIP   10.111.21.81   <none>        5432/TCP       9m50s   app=postgres
+
+NAME                        READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES             SELECTOR
+deployment.apps/flask-app   2/2     2            2           7m8s    flask-app    flask-app:latest   app=flask-app
+deployment.apps/postgres    1/1     1            1           9m50s   postgres     postgres:13        app=postgres
+
+NAME                                   DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES             SELECTOR
+replicaset.apps/flask-app-66c8679745   2         2         2       7m8s    flask-app    flask-app:latest   app=flask-app,pod-template-hash=66c8679745
+replicaset.apps/postgres-75bbf97b58    1         1         1       9m50s   postgres     postgres:13        app=postgres,pod-template-hash=75bbf97b58
+
+NAME                                                REFERENCE              TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/flask-app-hpa   Deployment/flask-app   cpu: <unknown>/50%   1         10        0          4s

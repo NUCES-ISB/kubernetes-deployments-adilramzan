@@ -1,0 +1,4 @@
+NAME                         READY   STATUS    RESTARTS      AGE
+flask-app-66c8679745-h4jwx   1/1     Running   0             12m
+flask-app-66c8679745-xjgz2   1/1     Running   0             12m
+postgres-75bbf97b58-hvnv7    1/1     Running   1 (13m ago)   14m
