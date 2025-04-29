@@ -1,0 +1,2 @@
+NAME            REFERENCE              TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+flask-app-hpa   Deployment/flask-app   cpu: 1%/50%   1         10        2          5m9s
